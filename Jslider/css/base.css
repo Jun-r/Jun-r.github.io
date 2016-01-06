@@ -1,0 +1,98 @@
+html,
+body {
+  height: 100%;
+  min-height: 450px;
+  font-size: 32px;
+  font-weight: 500;
+  color: #5d7399;
+}
+*{
+	padding:0;
+	margin:0;
+}
+.content {
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  background-color: #d2e1ec;
+  background-image: -webkit-linear-gradient(top, #bbcfe1 0%, #e8f2f6 80%);
+  background-image: linear-gradient(to bottom, #bbcfe1 0%, #e8f2f6 80%);
+  overflow: hidden;
+}
+.box{
+	width:700px;
+	height:400px;
+	margin:200px auto;
+	position: relative;
+	overflow:hidden;
+}
+.J-outer .J-dom{
+	width:700px;
+	height:400px;
+  font-family: "微软雅黑";
+  color:#fff;
+  text-align:center;
+  font-size:30px;
+  line-height:400px;
+}
+.li1{
+	background-color:coral;
+}
+.li2{
+	background-color:#999;
+}
+.li3{
+	background-color:burlywood;
+}
+.li4{
+	background-color:brown;
+}
+.li5{
+	background-color:royalblue;
+}
+.li6{
+	background-color:#000;
+}
+.box span.pre,.box span.next{
+	display:inline-block;
+	padding:10px;
+	background:#666;
+	position: absolute;
+	top:50%;
+	width:20px;
+	text-align: center;
+  font-size:30px;
+  height:60px;
+  font-family: '宋体';
+  line-height: 60px;
+	color:#fff;
+	margin-top:-40px;
+	cursor: pointer;
+    
+}
+.box span.pre{
+	left:0;
+}
+.box span.next{
+	right:0;
+}
+.navBtn{
+	position: absolute;
+	bottom:5px;
+	left:0;
+	right:0;
+	text-align: center;
+}
+.navBtn span{
+	display:inline-block;
+	height:10px;
+	width:10px;
+	background-color:#fff;
+	margin:0 4px;
+	border-radius:50%;
+	-webkit-border-radius:50%;
+	cursor: pointer;
+}
+.navBtn span.active,.navBtn span:hover{
+	background-color:red;
+}
