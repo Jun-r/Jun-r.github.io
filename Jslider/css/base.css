@@ -1,15 +1,88 @@
-html,
+body *{
+}
+* {
+	margin: 0;
+	outline: 0;
+	padding: 0;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+section
+{
+    -moz-user-select:none; 
+    -webkit-user-select:none; 
+    -ms-user-select:none;
+    -o-user-select:none; 
+    user-select:none;
+}
+article,aside,dialog,footer,header,section,footer,nav,figure,menu {
+	display: block
+}
+
+a {
+	text-decoration: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,.35)
+}
+
+html {
+	height: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%
+}
+
 body {
-  height: 100%;
-  min-height: 450px;
-  font-size: 32px;
-  font-weight: 500;
-  color: #5d7399;
+	background-color: #f0f0f0;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	font-weight: 300;
+	font-family: 'Microsoft Yahei',Tahoma,Helvetica,Arial,sans-serif;
+	font-size: 62.5%;
+	line-height: 1.231;
+	-webkit-touch-callout: none;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-align: stretch;
+	position: relative
 }
-*{
-	padding:0;
-	margin:0;
+
+img {
 }
+
+img:not([src*="/"]) {
+	display: none
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%
+}
+
+th,td,caption {
+	vertical-align: middle
+}
+
+textarea {
+	resize: none;
+	border: 0;
+	padding: 8px 0;
+	border-radius: 0
+}
+
+ul,li {
+	list-style: none;
+	margin: 0;
+	padding: 0
+}
+
+h1,h2,h3,h4,h5,h6 {
+	margin: 0;
+	padding: 0;
+	font-weight: 400
+}
+
 .content {
   height: 100%;
   position: relative;
@@ -26,9 +99,50 @@ body {
 	position: relative;
 	overflow:hidden;
 }
-.J-outer .J-dom{
-	width:700px;
-	height:400px;
+
+.mbox,.J-outer{
+	width:100%;
+	height:100%;
+}
+.mbox .J-dom{
+  font-family: "微软雅黑";
+  color:#fff;
+  text-align:center;
+  font-size:30px;
+    border: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: top center;
+    background-size: cover;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    z-index: 0;
+    display: none;
+    -webkit-transform-origin: center center;
+    background: #fff;
+}
+.J-dom.z-current {
+    z-index: 1;
+    display: inline-block;
+}
+.J-dom.z-active {
+    z-index: 2;
+    display: block
+}
+.z-current {
+    opacity: 1;
+}
+.mbox .J-dom div{
+	height:100%;
+	line-height:500px;
+}
+.box .J-dom{
+   width:700px;
+   height:400px;
   font-family: "微软雅黑";
   color:#fff;
   text-align:center;
@@ -53,7 +167,7 @@ body {
 .li6{
 	background-color:#000;
 }
-.box span.pre,.box span.next{
+.box span.pre,.box span.next,.mbox span.pre,.mbox span.next{
 	display:inline-block;
 	padding:10px;
 	background:#666;
@@ -68,17 +182,18 @@ body {
 	color:#fff;
 	margin-top:-40px;
 	cursor: pointer;
+	z-index:999;
     
 }
-.box span.pre{
+.box span.pre,.mbox span.pre{
 	left:0;
 }
-.box span.next{
+.box span.next,.mbox span.next{
 	right:0;
 }
 .navBtn{
 	position: absolute;
-	bottom:5px;
+	bottom:15px;
 	left:0;
 	right:0;
 	text-align: center;

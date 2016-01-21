@@ -1,11 +1,12 @@
 (function(global) {
 	'use strict';
-	var slider=function(opt){
+	var Jslider=function(opt){
 		var _setting={
 			element:"",
 			isAutoPlay:true,
 			isPage:false,
 			duration:4000,
+			isVertical:false,
 			isLooping:false,
 			animateTime:300
 		},
@@ -18,12 +19,13 @@
 		_this.sElementW=_this.sElement.width();
 		_this.sElLeftPos=_this.sElementW*2;
 		_this.index=0;
+		_this.axis = _this.opts.isVertical ? 'Y' : 'X';
 		_this.posArr=_this._getPosArr();
         _this._renderWrapper()
         _this._bindHandler();
-          _this.opts.isAutoPlay && _this._autoPlay();
+        _this.opts.isAutoPlay && _this._autoPlay();
 	}
-	slider.prototype={
+	Jslider.prototype={
 		_getPosArr:function(){
 			var _this=this;
 			var posArr=[];
@@ -78,6 +80,7 @@
 			_this.navBtns=_this.sElement.find(".navBtn span");
 			_this.sElement.append(_this.pre).append(_this.next);
 			_this.sElementL.eq(_this.index).addClass("active");
+			
 			_this.sElementL.each(function(i){
 				$(this).css({"position":"absolute","left":_this.posArr[i],"top":"0px"});
 			});
@@ -166,5 +169,5 @@
 		}
 
 	}
-	 global['slider'] = global['slider'] || slider;
+	 global['Jslider'] = global['Jslider'] || Jslider;
 })(this || window);
