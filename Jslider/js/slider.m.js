@@ -5,7 +5,7 @@
 			element:"",
 			isAutoPlay:false,
 			isPage:false,
-			animateType:"",  //card
+			animateType:"card",  //card
 			isVertical:true,
 			isLooping:false,
 			animateTime:300
@@ -41,6 +41,7 @@
 		_bindHandler:function(){
 			var _this=this;
             var hammer = new Hammer(_this.sElement[0]);
+            _this.hammer=hammer;
 	            hammer.get('pan').set({ direction: Hammer.DIRECTION_VERTICAL, threshold: 10 });
 	            hammer.on("press", function (ev) {
 	            	var index = _this._getNowIndex();
@@ -57,8 +58,6 @@
 	            })
 	            
 	            hammer.on('panstart',Hammer.bindFn(_this._pageTouchStart, _this));
-		 		hammer.on('panup pandown',Hammer.bindFn(_this._pageTouchMove, _this));
-		 		hammer.on('panend',Hammer.bindFn(_this._pageTouchEnd, _this));
 		 		_this.pre.on("click",function(){
 		 			_this.nextPre("pandown");
 				})
@@ -67,18 +66,29 @@
 				});
 	    },
 	    nextPre:function(dir){
-	    	var _this=this;
-	    	if(!_this.isMovestart)return;
-			_this.direction=dir;
-			_this.slideTo(dir,0);
-			this.isMovestart=false;
-			setTimeout(function(){
-				_this._watchTransitionEnd();
-			},10)
+	    	 var _this=this;
+            if(!_this.isMovestart)return;
+            if(_this.totalPage==1)return;
+            _this.direction=dir;
+            if(_this.nowPageNum==0 && _this.direction == "pandown"){
+                _this.movePageNum=_this.totalPage-1;
+            }else{
+                _this.movePageNum = _this._getMoveIndex(_this.nowPageNum);
+            }
+            _this.slideTo(dir,0);
+            this.isMovestart=false;
+            setTimeout(function(){
+                _this._watchTransitionEnd();
+            },10)
 	    },
+	    dirProp:function(direction) {
+            return (direction & Hammer.DIRECTION_HORIZONTAL) ? "X" : 'Y'
+        },
 		_pageTouchStart:function(ev){
 			var _this=this;
 			if(!_this.isMovestart)return;
+			if(_this.totalPage==1)return;
+			
 			_this.direction='';
 			_this.sElementU.children(".J-dom.z-current").css({
 				    "transition": "none",
@@ -86,22 +96,29 @@
                     "transform": "translateY(0px)",
                     "-webkit-transform": "translateY(0px)"
             });
+            _this.hammer.on('panup pandown',Hammer.bindFn(_this._pageTouchMove, _this));
+            _this.hammer.on('panend',Hammer.bindFn(_this._pageTouchEnd, _this));
 		},
 		_pageTouchMove:function(ev){
 			ev.preventDefault();
-			var _this=this;
-		    if(!_this.isMovestart)return;
-		    
-			if (_this.direction == "pandown") {
-                _this.slideTo("pandown",ev.distance);
-                return;
-            }
-			if (_this.direction == "panup") {
-            	_this.slideTo("panup",ev.distance);
-                return;
-            }
-			_this.direction=ev.type;
-			_this.slideTo(ev.type,ev.distance);
+            var _this=this;
+
+	            if (_this.direction == "pandown") {
+	                _this.slideTo("pandown",ev.distance);
+	                return;
+	            }
+	            if (_this.direction == "panup") {
+	                _this.slideTo("panup",ev.distance);
+	                return;
+	            }
+	            _this.direction=ev.type;
+	            if(_this.nowPageNum==0 && ev.type == "pandown"){
+	                _this.movePageNum=_this.totalPage-1;
+	            }else{
+	                _this.movePageNum = _this._getMoveIndex(_this.nowPageNum);
+	            }
+	            _this.slideTo(ev.type,ev.distance);
+
 		},
 		_getNowIndex:function(){
 			var _this=this;
@@ -109,105 +126,108 @@
 		},
 		_pageTouchEnd:function(ev){
 			var _this=this;
-			if(!_this.isMovestart)return;
-			this.isMovestart=false;
-			_this._watchTransitionEnd(ev);
+            if(!_this.isMovestart)return;
+            _this.isMovestart=false;
+            _this.hammer.off("panup pandown");
+            _this.hammer.off("panend");
+            _this._watchTransitionEnd(ev);
 		},
 		slideTo:function(type, distance){
-			 var _this=this;
-			 _this.movePageNum=_this._getMoveIndex(_this.nowPageNum);
-			 var mW= type == "panup" ? _this.moveNum - distance : -_this.moveNum + distance;
-			 var transform="translateY("+mW+"px)";
-			 var scale = _this.opts.animateType=='card'?(1 - Math.abs(distance*0.8/_this.moveNum)).toFixed(3):1;
-			 _this.isDir=type == "panup"?"top":"bottom";
-			_this.sElementL.eq(_this.nowPageNum).removeClass("z-active")
-			   .addClass("z-current z-move").css({
+			   var _this=this;
+            var mW= type == "panup" ? _this.moveNum - distance : -_this.moveNum + distance;
+            var transform="translateY("+mW+"px)";
+            var scale = _this.opts.animateType=='card'?(1 - Math.abs(distance/_this.moveNum)):1;
+            _this.isDir=type == "panup"?"top":"bottom";
+            _this.sElementL.eq(_this.nowPageNum).removeClass("z-active")
+                .addClass("z-current z-move").css({
+                    "transition": "none",
+                    "-webkit-transition": "none",
+                    "transform": "scale(" + scale + ")",
+                    "-webkit-transform": "scale(" + scale + ")",
+                    "transform-origin": "center " + _this.isDir + " 0px",
+                    "-webkit-transform-origin": "center " + _this.isDir + " 0px"
+                });
+            _this.sElementL.eq(_this.movePageNum).addClass("z-active z-move").css({
                 "transition": "none",
                 "-webkit-transition": "none",
-                "transform": "scale("+scale+")",
-                "-webkit-transform": "scale("+scale+")",
-                "transform-origin":"center "+ _this.isDir+" 0px",
-                "-webkit-transform-origin":"center "+ _this.isDir+" 0px"
-            });
-            _this.sElementL.eq(_this.movePageNum).addClass("z-active z-move").css({
-            	"transition": "none",
-                "-webkit-transition": "none",
                 "transform": transform,
-                "-webkit-transform":transform,
+                "-webkit-transform": transform
             });
 		},
 		_getMoveIndex:function(nowIndex){
 			var _this=this,movePageNum=null;
-			if(_this.direction=='pandown'){
-				if (nowIndex > 0) {
-					movePageNum = nowIndex - 1;
-	            } else {
-	                movePageNum = _this.totalPage-1;
-	            }
-			}else{
-				if (nowIndex < _this.totalPage-1) {
-					movePageNum =nowIndex + 1;
-	            } else {
-	                movePageNum = 0;
-	            }
-			}
-			return movePageNum;
+            var totalPage=_this.totalPage-1;
+            if(_this.direction=='pandown'){
+                if (nowIndex > 0) {
+                    movePageNum = nowIndex - 1;
+                } else {
+                    movePageNum = totalPage;
+                }
+            }else{
+                if (nowIndex < _this.totalPage-1) {
+                    movePageNum =nowIndex + 1;
+                } else {
+                    movePageNum = 0;
+                }
+            }
+            return movePageNum;
 		},
         _watchTransitionEnd:function(ev){
         	var _this=this;
-        	var distance = (ev && ev.distance) || 100;
-        	var movePage=_this.sElementL.eq(_this.movePageNum);
-        	var nowPage=_this.sElementL.eq(_this.nowPageNum);
-        	var moveN=_this.direction == "panup" ? _this.moveNum : -_this.moveNum;
-        	var transform=distance > 50 ? "translateY(0px)" : "translateY("+moveN+"px)";
-        	//console.log(_this.movePageNum+"="+nowIndex)
-        	if(_this.opts.animateType=='card'){
-        		var isScale=distance < 50?"1":"0.2";
-	        	nowPage.removeAttr("style").css({
-	        		"transition":"transform .4s linear",
-	        		"-webkit-transition":"-webkit-transform .4s linear",
-	        		"transform": "scale("+isScale+")",
-	                "-webkit-transform": "scale("+isScale+")",
-	                "transform-origin":"center "+ _this.isDir+" 0px",
-	                "-webkit-transform-origin":"center "+ _this.isDir+" 0px"
-	        	});
-        	}
-        	movePage.css({
+            var distance = (ev && ev.distance) || 100;
+            var movePage=_this.sElementL.eq(_this.movePageNum);
+            var nowPage=_this.sElementL.eq(_this.nowPageNum);
+            var moveN=_this.direction == "panup" ? _this.moveNum : -_this.moveNum;
+            var transform=distance > 50 ? "translateY(0px)" : "translateY("+moveN+"px)";
+
+            if(_this.opts.animateType=='card'){
+                var isScale=distance < 50?"1":"0.2";
+                nowPage.removeAttr("style").css({
+                    "transition":"transform .4s linear",
+                    "-webkit-transition":"-webkit-transform .4s linear",
+                    "transform": "scale("+isScale+")",
+                    "-webkit-transform": "scale("+isScale+")",
+                    "transform-origin":"center "+ _this.isDir+" 0px",
+                    "-webkit-transform-origin":"center "+ _this.isDir+" 0px"
+                });
+            }
+
+            movePage.css({
                 "transition": "transform .4s linear",
                 "-webkit-transition": "-webkit-transform .4s linear",
                 "transform": transform,
                 "-webkit-transform": transform
-            
-        	});
-	       var time = setInterval(function () {
-                    clearInterval(time);
-	                if(distance < 50 ){
-		            	nowPage.removeClass("z-current z-active z-move").addClass("z-current")
-		            	.css({
-		            		"transition":"transform .4s linear",
-		            		"-webkit-transition":"-webkit-transform .4s linear",
-		            		"transform":"translateY(0px)",
-		            		"-webkit-transform":"translateY(0px)"
-		            	}).removeAttr("style");
-		            	movePage.removeAttr("style").removeClass("z-active z-move");
-		            }else{
-		            	if(_this.opts.animateType=='card'){
-			                nowPage.removeAttr("style").css({
-			                	"transition": "none",
-	                            "-webkit-transition": "none",
-			                	"transform": "scale(0.2)",
-	                            "-webkit-transform": "scale(0.2)",
-	                            "transform-origin":"center "+ _this.isDir+" 0px",
-	                            "-webkit-transform-origin":"center "+ _this.isDir+" 0px"
-			                })
-		                }
-		                nowPage.removeClass("z-current z-active z-move");
-	            	    movePage.removeClass("z-active z-move").addClass("z-current");
-	            	    _this.nowPageNum=_this._getNowIndex();
-	            	    _this.movePageNum=_this._getMoveIndex(_this.nowPageNum);
-		            }
-		           _this.isMovestart=true;
-	            },410)
+
+            });
+            var time = setInterval(function () {
+                clearInterval(time);
+                if(distance < 50 ){
+                    nowPage.removeClass("z-current z-active z-move").addClass("z-current")
+                        .css({
+                            "transition":"transform .4s linear",
+                            "-webkit-transition":"-webkit-transform .4s linear",
+                            "transform":"translateY(0px)",
+                            "-webkit-transform":"translateY(0px)"
+                        }).removeAttr("style");
+                        movePage.removeAttr("style").removeClass("z-active z-move");
+                }else{
+                    if(_this.opts.animateType=='card'){
+                        nowPage.removeAttr("style").css({
+                            "transition": "none",
+                            "-webkit-transition": "none",
+                            "transform": "scale(0.2)",
+                            "-webkit-transform": "scale(0.2)",
+                            "transform-origin":"center "+ _this.isDir+" 0px",
+                            "-webkit-transform-origin":"center "+ _this.isDir+" 0px"
+                        })
+                    }
+                    nowPage.removeClass("z-current z-active z-move")
+                    movePage.removeClass("z-active z-move").addClass("z-current");
+                    _this.nowPageNum=_this._getNowIndex();
+                }
+                _this.isMovestart=true;
+
+            },400)
         }
 	}
 	 global['Jslider'] = global['Jslider'] || Jslider;

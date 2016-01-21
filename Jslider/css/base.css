@@ -138,7 +138,17 @@ h1,h2,h3,h4,h5,h6 {
 }
 .mbox .J-dom div{
 	height:100%;
-	line-height:500px;
+	position:relative;
+}
+.mbox .J-dom div span{
+	position: absolute;
+    top:50%;
+    left:50%;
+    width:120px;
+    height:30px;
+    display: block;
+    text-align:center;
+    margin:-15px 0 0 -60px;
 }
 .box .J-dom{
    width:700px;
@@ -210,4 +220,19 @@ h1,h2,h3,h4,h5,h6 {
 }
 .navBtn span.active,.navBtn span:hover{
 	background-color:red;
+}
+.pc{
+	
+}
+.wap,.pc{
+	position: absolute;
+	top:0;
+	right:0;
+	display:block;
+	width:50px;
+	z-index:999;
+	color:#fff;
+	text-align: center;
+	background-color:#000;
+	line-height:30px;
 }
