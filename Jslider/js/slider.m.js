@@ -7,7 +7,6 @@
 			isPage:false,
 			animateType:"card",  //card
 			isVertical:true,
-			isLooping:false,
 			animateTime:300
 		},
 		_this=this;
