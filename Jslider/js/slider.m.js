@@ -26,7 +26,7 @@
 		
         _this._renderWrapper()
         _this._bindHandler();
-//      _this.opts.isAutoPlay && _this._autoPlay()
+
 	}
 	Jslider.prototype={
 		_renderWrapper:function(){
