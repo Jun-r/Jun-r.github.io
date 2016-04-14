@@ -1,0 +1,39 @@
+@charset "utf-8";
+/***浏览器样式重置***/
+body, dl, dt, dd,form,ul,li,table,td,tr,input,button,p,h2,h3, h4, h5, h6 {margin:0; padding:0;}
+html,body {font-family:'微软雅黑';font-size:12px;outline:0;border:0;background:#fff;color: #666;}
+a{color:#666;*cursor:pointer;}
+a:hover{color:#ea4b38}
+a,a:hover{text-decoration:none;outline:none;/*blr:expression(this.onFocus=this.blur());*/}
+ul,li,dl,dt,dd{list-style:none;}
+button{border:0;border:none;outline:none;cursor:pointer;}
+img,input,textarea,select{border:none;border:0;outline:none;}
+i,em{font-style:normal;}
+input,select{font-family: "微软雅黑";color: #666;}
+input[type="radio"],input[type="checkbox"]{position: relative;*top: 2px;vertical-align:middle;}
+/*全局公用*/
+.f-l{float:left;}
+.f-r{float:right}
+.icon,.arrow,.icon-b,.pj,.vip,.customerService,.textIcon,.l-pro,.v-pre,.v-next{background-image:url(../images/hy-bg.png);background-repeat:no-repeat;display:inline-block;}
+.icon-b,.user-avatar{background-image:url(../images/hy-bg-b.png)}
+.icon-z{background:url("../images/hy-bg-z.png");background-repeat:no-repeat;display:inline-block;}
+.mt,.mc{overflow: hidden;clear: both;}
+.cl:after{content:"";display:table;clear:both;font-size:1px;line-height:0;height:0;}
+.cl{zoom:1;}
+
+
+.content{width:500px;height:400px;overflow:hidden;margin:50px auto;position:relative;}
+.content p{line-height:25px;font-size:14px}
+
+
+.ui-jscroll-wp{position:absolute;}
+.ui-scrollBar{position: absolute;top:0;right:0;bottom:0;background:#000;width:10px}
+.ui-scrollBar .scrollBarV{display:block;width:100%;background:#F21B1B;position:relative;-webkit-user-select:none}
+.h3{font-size:25px;font-weight:bold;color:#333;margin:50px auto 0 auto;width:500px;}
+.h3 span{color:#666;font-size:16px;float:right;font-weight:100;margin-top:10px;}
+
+.test{background:#eee;color:#666;overflow:hidden;padding:0 10px;width:480px}
+.test li{line-height:30px;height:30px;}
+.test li .f-r{cursor:pointer;margin-right:10px;}
+
+.updata{width:80px;height:30px;line-height:30px;background:#333;color:#fff;font-size:14px;display:block;text-align:center;}

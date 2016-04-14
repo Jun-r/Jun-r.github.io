@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Jscroll滚动条</title>
+<link rel="stylesheet" href="css/base.min.css" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="js/Jscroll.js"></script>
+<script type="text/javascript">
+  $(function(){
+  	$(".ui-jscroll1").Jscroll();
+  	var scroll=$(".ui-jscroll2").Jscroll();
+  	var html='<li><span class="f-l">测试</span><span class="f-r close">X</span></li>';
+  	$(".test li .close").on("click",function(){
+  		$(this).parent().remove();
+  		scroll.refresh();
+  	})
+  	$(".updata").on("click",function(){
+  		$(".test").append(html);
+  		scroll.refresh();
+  	})
+  })
+
+</script>
+</head>
+<body>
+ <body>
+ 	<div class="h3">自定义滚动条<span>Junr &nbsp;2015.6.19</span></div>
+ 	<div class="content ui-jscroll1">
+ 		<p>【概述】
+国内第一套全面的WEB前端高级课程，特聘微软专家和传智播客特级老师联袂授课。从JS基础讲起，专注原生，专注算法，专注培养解决问题的思路。同时注重内功的修炼，和武功招式的学习。课程涵盖JS基础、网页特效、三大框架、HTML5、CSS3、Canvas手机游戏、Node.js服务器开发、设计模式、Angular.js、等内容。全部学习下来，你将会酣畅淋漓，大快朵颐！就业范围选择广，18般武艺样样精通。
+
+【一、前期模块】
+『1.1 JS基础』学JS编程，肯定要把基础打牢。基础知识很多：变量、运算符、表达式、语句、事件、函数、方法、属性、if语句、swich语句、for语句、作用域、DOM……太多了，放轻松！！不管你的编程基础如何，我们的老师将非常详细、全面细致地带你进入JS的编程世界。
+【一、前期模块】
+『1.1 JS基础』学JS编程，肯定要把基础打牢。基础知识很多：变量、运算符、表达式、语句、事件、函数、方法、属性、if语句、swich语句、for语句、作用域、DOM……太多了，放轻松！！不管你的编程基础如何，我们的老师将非常详细、全面细致地带你进入JS的编程世界。
+【一、前期模块】
+『1.1 JS基础』学JS编程，肯定要把基础打牢。基础知识很多：变量、运算符、表达式、语句、事件、函数、方法、属性、if语句、swich语句、for语句、作用域、DOM……太多了，放轻松！！不管你的编程基础如何，我们的老师将非常详细、全面细致地带你进入JS的编程世界。
+【一、前期模块】
+『1.1 JS基础』学JS编程，肯定要把基础打牢。基础知识很多：变量、运算符、表达式、语句、事件、函数、方法、属性、if语句、swich语句、for语句、作用域、DOM……太多了，放轻松！！不管你的编程基础如何，我们的老师将非常详细、全面细致地带你进入JS的编程世界。
+【一、前期模块】
+『1.1 JS基础』学JS编程，肯定要把基础打牢。基础知识很多：变量、运算符、表达式、语句、事件、函数、方法、属性、if语句、swich语句、for语句、作用域、DOM……太多了，放轻松！！不管你的编程基础如何，我们的老师将非常详细、全面细致地带你进入JS的编程世界。
+
+『1.2 JS网页特效』搞前端的，如果连网页特效都不会制作，就是没有进入行业的大门。我们将讲解页面上大量特效的原理，和高效的编程实现方法。</p>
+ 	<p>『1.3 通用JS框架』我们要学习用原生JS自己开发一个通用框架！像jQuery一样，甚至效率比jQuery还高！适配各个浏览器，代码清晰高效，这对你的原生JS水平，是一个很大的提升。
+『1.7 装饰者模式』我们在课程前期，就带你认识一个好用的设计模式。在不必改变原类文件和使用继承的情况下，动态地扩展一个对象的功能。它是通过创建一个包装对象，也就是装饰来包裹真实的对象</p>
+
+    </div>
+    <div class="content ui-jscroll2">
+         <ul class="test">
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+            <li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+            <li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+           <li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         	<li><span class="f-l">测试</span><span class="f-r close">X</span></li>
+         </ul>
+    </div>
+    <div class="content">
+    	<a href="javascript:;" class="updata">新增</a>
+    </div>
+</body>
+</html>
