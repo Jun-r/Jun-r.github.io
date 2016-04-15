@@ -1,16 +1,19 @@
 @import "_reset";
 @import "_function";
 .J-page{
-  width:380px;
+  width:300px;
   margin:0 auto;
   position:absolute;
   top:50%;
   left:50%;
-  margin:-150px 0 0 -150px
+  margin:-194px 0 0 -150px
+}
+.hr{
+  margin-top:10px;
 }
 .J-page a{
   display:block;
-  width:150px;
+  width:148px;
   float:left;
   height:40px;
   border:1px solid #D2D1D1;
@@ -28,10 +31,10 @@
 .J-page .J-name{
   font-size: 14px;
   line-height: 35px;
-  font-weight: 100;
   text-align:right;
   display: block;
   margin-top:3px;
+  font-weight:bold;
   vertical-align: bottom;
 }
 .J-page .amiName{
@@ -57,7 +60,7 @@
 }
 .J-logo{
   position: absolute;
-  top: 28px;
+  top: 120px;
   left: 50%;
   margin-left: -55px;
   width: 110px;
@@ -81,11 +84,14 @@
 .J-page .content{
   line-height:25px;
   font-size:14px;
-  height:175px;
+  //height:175px;
   overflow:hidden;
   position: relative;
   //border: 1px dashed #d2d2d2;
-  padding: 10px 15px;
+  padding: 10px 0;
+}
+.J-page .content .text{
+  text-align: center;
 }
 ////.J-page .content span{
 ////  margin-bottom:20px;
@@ -93,17 +99,17 @@
 ////  color:red;
 //}
 .amiText{
-   @include amiText();
- }
+  @include amiText();
+}
 
 .J-xm{
   margin:0 auto;
-  width:302px;
+  width:300px;
   height:42px;
   position:absolute;
-  bottom:25px;
+  bottom:120px;
   left:50%;
-  margin-left:-151px;
+  margin-left:-149px;
 }
 
 .J-xm .title{
