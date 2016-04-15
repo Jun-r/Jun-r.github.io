@@ -17,19 +17,17 @@ $(function(){
     system.mac = p.indexOf("Mac") == 0;
     system.x11 = (p == "X11") || (p.indexOf("Linux") == 0);
     system.ipad = (navigator.userAgent.match(/iPad/i) != null)?true:false;
-    //跳转语句，如果是手机访问就自动跳转到wap.baidu.com页面
-    if (system.win || system.mac || system.xll||system.ipad) {
-       alert("1")
-    } else {
-        alert("2")
-    }
-    //if(browser.versions.mobile) {
-    //    $("[data-url]").on("click", function (ev) {
-    //        var url = $(this).attr("data-url");
-    //        ev.preventDefault;
-    //        window.location.href = url;
-    //    });
-    //}
+    $("[data-url]").on("click", function (ev) {
+        var url = $(this).attr("data-url");
+        if (system.win || system.mac || system.xll||system.ipad) {
+
+        } else {
+            ev.preventDefault;
+            window.location.href = url;
+        }
+
+    });
+    
     var animationEnd="animationEnd webkitAnimationEnd";
     $("[data-delay]").each(function(i){
         var _this=$(this);
