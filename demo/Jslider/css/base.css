@@ -30,7 +30,6 @@ html {
 }
 
 body {
-	background-color: #f0f0f0;
 	margin: 0;
 	padding: 0;
 	width: 100%;
@@ -87,9 +86,6 @@ h1,h2,h3,h4,h5,h6 {
   height: 100%;
   position: relative;
   z-index: 1;
-  background-color: #d2e1ec;
-  background-image: -webkit-linear-gradient(top, #bbcfe1 0%, #e8f2f6 80%);
-  background-image: linear-gradient(to bottom, #bbcfe1 0%, #e8f2f6 80%);
   overflow: hidden;
 }
 .box{
