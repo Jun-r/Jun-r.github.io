@@ -1,0 +1,9 @@
+@mixin amiText($time:5s){
+  width: 18.5em;
+  width: 40ch;
+  //border-right:1px #666 solid;
+  padding-right:5px;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing $time steps(500, end),blink-caret .3s step-end infinite alternate;
+}

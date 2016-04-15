@@ -2,86 +2,35 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Junr.me - 俊走偏峰</title>
+		<title>Junr.me - 俊峰</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
-		<script src="http://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
-		<style>
-			*{
-				margin:0;
-				padding:0;
-			}
-			body{
-				font-family: 'Microsoft Yahei', Tahoma, Helvetica, Arial, sans-serif;
-			}
-			a{
-				text-decoration: none;
-				color:#333;
-				display:block;
-			}
-			.J-page{
-				width:302px;
-				margin:0 auto;
-				position:absolute;
-				top:50%;
-				left:50%;
-				margin:-200px 0 0 -150px
-			}
-			.J-page a{
-				display:block;
-				width:150px;
-				float:left;
-				height:40px;
-				border:1px solid #D2D1D1;
-				line-height:40px;
-				text-align:center;
-				font-size:14px;
-				margin-left:-1px;
-			}
-
-			.J-page a:hover{
-				background-color:#333;
-				border:1px solid #333;
-				color:#fff;
-			}
-			.J-page h3{
-				font-size: 15px;
-				line-height: 35px;
-				font-weight: 100;
-				padding-bottom:20px;
-				text-align:center;
-				vertical-align: bottom;
-			}
-			.J-page h3 span{
-				font-size:30px;
-				position:relative;
-				top:2px;
-				margin-right:4px;
-			}
-			.J-page .content{
-				line-height:25px;
-				font-size:12px;
-				text-align: center;
-			}
-			.J-page .content span{
-				display:block;
-				margin-bottom:20px;
-				font-size:13px;
-				color:red;
-			}
-		</style>
+		<link rel="stylesheet" href="./css/animation.css" />
+		<link rel="stylesheet" href="./css/index.css" />
 	</head>
-	<body>
+<body>
 	<div class="J-page">
-	   <h3><span>Junr.me</span>- 俊走偏峰</h3>
 	   <div class="content">
-		   一张网页，要经历怎样的过程，才能抵达你面前？<br>
-		   一个博客，要经过多就的开发，才能完成？<br><br>
-		   <span>网站正在开发中....</span>
+		   <div data-delay="52" data-class="zoomOutLeft animated">
+			  <div class="text hide" data-delay="0" data-class="amiText"> 一张网页，需要经历怎样的过程，才能抵达你面前？</div>
+			  <div class="text hide" data-delay="12" data-class="amiText">一道佳肴，需要经过多少工序，才能口感完美？</div>
+			  <div class="text hide" data-delay="24" data-class="amiText">一个前端，需要掌握多少技能，才能成为大牛？</div>
+			  <div class="text hide" data-delay="36" data-class="amiText">一个博客，需要经过多久的开发，才能完成？</div>
+			  <!--<span class="hide">网站正在开发中....</span>-->
+			  <span class="J-name hide" data-delay="48" data-class="fadeIn animated"><em class="n">Junr.me</em> - <em>俊峰</em></span>
+		   </div>
+		   <div class="tisText">
+			   <span class="hide red" data-delay="55" data-class="bounceInRight animated">正在努力建设中...</span>
+			   <span class="hide zindex" data-delay="62" data-class="fadeIn animated">可以先瞅一瞅下面的插件</span>
+		   </div>
+		   <div class="J-xm hide" data-delay="68" data-class="bounceInRight animated">
+			   <a href="./demo/Jslider/index.html">滑动特效</a>
+			   <a href="./demo/Jscroll">自定义滚动条</a>
+		   </div>
 	   </div>
-       <a href="./demo/Jslider">滑动特效</a>
-	   <a href="./demo/Jscroll">自定义滚动条</a>
 	</div>
-	</body>
+	<script src="http://cdn.bootcss.com/jquery/2.2.0/jquery.min.js"></script>
+	<script src="./js/base.js"></script>
+</body>
 </html>
