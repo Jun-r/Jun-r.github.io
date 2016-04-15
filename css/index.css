@@ -179,6 +179,7 @@ h5 {
   font-weight: 100;
   text-align: right;
   display: block;
+  margin-top: 3px;
   vertical-align: bottom;
 }
 
@@ -205,6 +206,16 @@ h5 {
   right: 0;
   margin-top: -12px;
   height: 25px;
+}
+
+.J-logo {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  margin-left: -55px;
+  width: 110px;
+  font-size: 30px;
+  font-weight: 100;
 }
 
 .J-page .tisText span {
