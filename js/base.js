@@ -1,6 +1,6 @@
 /*
- * Kbang.com 1.0.0
- * 2016-04-12 15:02:21
+ *
+ * 2016-04-15 15:02:21
  * Copyright (c) 2016 Licensed MIT <> 
  */ 
 $(function(){
@@ -14,14 +14,6 @@ $(function(){
          clearTimeout(timeArr[i]);
          timeArr[i]=setTimeout(function(){
               _this.removeClass("hide").addClass(_amiClass);
-                 _this.on(animationEnd, function() {
-                     if(_elCallback){
-                         $("."+_elCallback).removeClass(_amiClass).addClass("hide");
-                     }else{
-                        // _this.removeClass(_amiClass).addClass("");
-                     }
-                 });
-
           },time)
     })
 })
