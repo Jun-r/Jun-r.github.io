@@ -27,7 +27,18 @@ $(function(){
         }
 
     });
-    
+    if (system.win || system.mac || system.xll||system.ipad) {
+       //alert("1")
+    } else {
+        //alert("2")
+    }
+    //if(browser.versions.mobile) {
+    //    $("[data-url]").on("click", function (ev) {
+    //        var url = $(this).attr("data-url");
+    //        ev.preventDefault;
+    //        window.location.href = url;
+    //    });
+    //}
     var animationEnd="animationEnd webkitAnimationEnd";
     $("[data-delay]").each(function(i){
         var _this=$(this);
@@ -38,6 +49,58 @@ $(function(){
          timeArr[i]=setTimeout(function(){
               _this.removeClass("hide").addClass(_amiClass);
           },time)
+    });
+    //logo
+    $(document).ready(function () {
+        YugenLogo.initialize( {
+            framerate: 80,
+
+            width: 160,
+            height: 160,
+
+            colorSpeedFactor: 0.4,
+            morphSpeedFactor: 0.4,
+            introSpeedFactor: 2,
+            outroSpeedFactor: 2,
+
+            morphStrengthFactor: 0.8,
+
+            morphBaseSpeedFactor: 0.2,
+            normalOffsetFactor: 1.5,
+
+            maxShapeRotation: 0.3,
+
+            wordOffsetX: 0,
+            wordOffsetY: 0,
+
+            wordScale: 1,
+
+            foregroundScaleX: 0.42,
+            foregroundScaleY: 0.58,
+            backgroundScaleX: 0.37,
+            backgroundScaleY: 0.72,
+
+            shadowAlpha: 0.1,
+
+            shapeQuality: 9,
+
+            containerID: "logo-bg",
+            logoCanvasID: "logo-canvas",
+
+            colors:[
+                [new YugenLogo.util.Color(250, 250, 250), new YugenLogo.util.Color(0, 0, 0)],
+                [new YugenLogo.util.Color(0, 0, 0), new YugenLogo.util.Color(250, 250, 250)]
+            ],
+
+            inputs: [
+                YugenLogo.input.move,
+                YugenLogo.input.press
+            ],
+
+            fallbackImages: [
+
+            ]
+        });
     });
 
 })

@@ -1,12 +1,15 @@
 @import "_reset";
 @import "_function";
+body,html{
+  height:100%;
+}
 .J-page{
   width:300px;
   margin:0 auto;
   position:absolute;
   top:50%;
   left:50%;
-  margin:-194px 0 0 -150px
+  margin:-106px 0 0 -150px
 }
 .hr{
   margin-top:10px;
@@ -58,7 +61,7 @@
   margin-top:-12px;
   height:25px;
 }
-.J-logo{
+.J-ym{
   position: absolute;
   top: 120px;
   left: 50%;
@@ -120,4 +123,66 @@
   text-align:center;
   margin:0 auto;
   font-size:14px;
+}
+
+@font-face {
+  font-family: "fonteditor";
+  src: url("/font/fonteditor.eot"); /* IE9 */
+  src: url("/font/fonteditor.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("/font/fonteditor.woff") format("woff"), /* chrome、firefox */
+  url("/font/fonteditor.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+  url("/font/fonteditor.svg#uxfonteditor") format("svg"); /* iOS 4.1- */
+}
+.J-logo{
+  position: relative;
+  top:50%;
+  margin-top:-285px;
+}
+.amiTopM{
+  margin-top:-185px !important;
+  transition: margin-top ease .4s;
+}
+.logo-bg {
+  width: 320px;
+  height: 160px;
+  position: absolute;
+  top: 20px;
+  margin-left: -4.8em;
+  z-index: 1;
+}
+.J-logo .logo-bg {
+  width: 160px;
+  height: 160px;
+  left: 50%;
+  margin-left: -80px;
+}
+.logo {
+  width: 160px;
+  height: 80px;
+  position: absolute;
+  top: 60px;
+  left: 70px;
+  margin-left: -4.8em;
+  z-index: 100;
+  text-align: center;
+}
+.J-logo .logo {
+  width: 80px;
+  height: 160px;
+  top: 47px;
+  left: 50%;
+  margin-left: -40px;
+}
+.logo h1 {
+  font-size: 3em;
+  line-height: 1.2;
+  font-family: fonteditor;
+  font-weight: lighter;
+}
+.logo h1 a {
+  text-decoration: none;
+  color: #fff;
+}
+.logo h1 a:hover {
+  color: #fff;
 }
