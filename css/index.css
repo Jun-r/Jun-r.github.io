@@ -286,7 +286,7 @@ body, html {
 
 @font-face {
   font-family: "fonteditor";
-  src: url("../font/fonteditor.eot");
+  src: url("/font/fonteditor.eot");
   /* IE9 */
   src: url("/font/fonteditor.eot?#iefix") format("embedded-opentype"), url("/font/fonteditor.woff") format("woff"), url("/font/fonteditor.ttf") format("truetype"), url("/font/fonteditor.svg#uxfonteditor") format("svg");
   /* iOS 4.1- */
@@ -304,7 +304,7 @@ body, html {
 
 .logo-bg {
   width: 320px;
-  height: 160px;
+  height: 180px;
   position: absolute;
   top: 20px;
   margin-left: -4.8em;
@@ -313,7 +313,7 @@ body, html {
 
 .J-logo .logo-bg {
   width: 160px;
-  height: 160px;
+  height: 180px;
   left: 50%;
   margin-left: -80px;
 }
