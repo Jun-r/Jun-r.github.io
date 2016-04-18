@@ -294,7 +294,7 @@ body, html {
 .J-logo {
   position: relative;
   top: 50%;
-  margin-top: -285px;
+  margin-top: -295px;
 }
 
 .amiTopM {
@@ -331,8 +331,8 @@ body, html {
 
 .J-logo .logo {
   width: 80px;
-  height: 160px;
-  top: 47px;
+  height: 100px;
+  top: 56px;
   left: 50%;
   margin-left: -40px;
 }
