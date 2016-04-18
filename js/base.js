@@ -56,7 +56,7 @@ $(function(){
             framerate: 80,
 
             width: 160,
-            height: 180,
+            height: 200,
 
             colorSpeedFactor: 0.4,
             morphSpeedFactor: 0.4,

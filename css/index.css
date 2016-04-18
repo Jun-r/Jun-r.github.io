@@ -248,7 +248,6 @@ body, html {
   font-size: 14px;
   overflow: hidden;
   position: relative;
-  padding: 10px 0;
 }
 
 .J-page .content .text {
@@ -294,7 +293,7 @@ body, html {
 .J-logo {
   position: relative;
   top: 50%;
-  margin-top: -300px;
+  margin-top: -310px;
 }
 
 .amiTopM {
@@ -304,7 +303,7 @@ body, html {
 
 .logo-bg {
   width: 320px;
-  height: 180px;
+  height: 200px;
   position: absolute;
   top: 20px;
   margin-left: -4.8em;
@@ -313,7 +312,7 @@ body, html {
 
 .J-logo .logo-bg {
   width: 160px;
-  height: 180px;
+  height: 200px;
   left: 50%;
   margin-left: -80px;
 }
@@ -332,7 +331,7 @@ body, html {
 .J-logo .logo {
   width: 80px;
   height: 100px;
-  top: 56px;
+  top: 60px;
   left: 50%;
   margin-left: -40px;
 }
